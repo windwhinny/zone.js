@@ -511,6 +511,9 @@ Zone.patchMutationObserverClass = function (className) {
 };
 
 Zone.patchRegisterElement = function () {
+  // TODO: disabled custom element support for now,
+  // because of https://github.com/angular/zone.js/issues/24
+  return;
   if (!('registerElement' in document)) {
     return;
   }
