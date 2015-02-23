@@ -29,4 +29,5 @@ module.exports = function(options) {
   options.customLaunchers = CUSTOM_LAUNCHERS;
   options.browsers = Object.keys(CUSTOM_LAUNCHERS);
   options.reporters = ['dots', 'saucelabs'];
+  options.captureTimeout = 60000;
 };
