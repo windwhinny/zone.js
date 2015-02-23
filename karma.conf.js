@@ -1,8 +1,12 @@
 // Karma configuration
 
-module.exports = function (config) {
-  config.set({
-    basePath: '',
+var sauceConfig = require('./config/karma.sauce.conf');
+var travisConfig = require('./config/karma.travis.conf');
+
+module.exports = function(config) {
+  var options = {
+    frameworks: ['jasmine'],
+
     files: [
       'test/util.js',
       'zone.js',
@@ -12,21 +16,13 @@ module.exports = function (config) {
       {pattern: 'test/assets/**/*.html', watched: true, served: true, included: false}
     ],
 
-    reporters: ['progress'],
+    browsers: ['Chrome']
+  };
 
-    preprocessors: {},
+  if (process.argv.indexOf('--sauce') > -1) {
+    sauceConfig(options);
+    travisConfig(options);
+  }
 
-    //port: 9876,
-    colors: true,
-
-    logLevel: config.LOG_INFO,
-
-    browsers: ['Firefox'],
-    frameworks: ['jasmine'],
-
-    captureTimeout: 60000,
-
-    autoWatch: true,
-    singleRun: false
-  });
+  config.set(options);
 };
