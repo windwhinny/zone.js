@@ -1,39 +1,24 @@
 // Karma configuration
 
 module.exports = function (config) {
+  require('./karma.conf')(config);
   config.set({
-    basePath: '',
     files: [
-      'test/util.js',
-      'test/wtf_mock.js',
-      'test/setup-microtask.js',
-      'examples/js/*.js',
-      'test/**/*.spec.js',
+      'test/browser_entry_point.ts',
+      'test/setup-microtask.ts',
+      'test/**/*.spec.ts',
       {pattern: 'test/assets/**/*.*', watched: true, served: true, included: false},
-      {pattern: 'lib/**/*.js', watched: true, served: false, included: false}
-    ],
-
-    exclude: [
-      'test/commonjs.spec.js',
+      // Autowatcch all files to trigger rerun
+      {pattern: 'lib/**/*.ts', watched: true, served: false, included: false},
+      {pattern: 'test/**/*.ts', watched: true, served: false, included: false}
     ],
 
     preprocessors: {
-      'test/setup-microtask.js': [ 'browserify' ]
+      'test/browser_entry_point.ts': [ 'webpack', 'sourcemap' ],
+      'test/setup-microtask.ts': [ 'webpack', 'sourcemap' ],
+      'test/**/*.spec.ts': [ 'webpack', 'sourcemap' ],
     },
 
-    reporters: ['progress'],
-
-    //port: 9876,
-    colors: true,
-
-    logLevel: config.LOG_INFO,
-
-    browsers: ['Firefox'],
-    frameworks: ['jasmine', 'browserify'],
-
-    captureTimeout: 60000,
-
-    autoWatch: true,
-    singleRun: false
+    exclude: []
   });
 };
