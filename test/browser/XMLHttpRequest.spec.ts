@@ -31,7 +31,7 @@ describe('XMLHttpRequest', function () {
       req.send();
 
       var lastScheduled = wtfMock.log[wtfMock.log.length - 1];
-      expect(lastScheduled).toMatch('# Zone:schedule:macroTask:XMLHttpRequest.send');
+      expect(lastScheduled).toMatch(/# Zone\:schedule\:macroTask\:XMLHttpRequest\.send/);
     }, null, null, 'unit-test');
   });
 
@@ -76,7 +76,7 @@ describe('XMLHttpRequest', function () {
     });
 
     it('should allow canceling of an XMLHttpRequest', function(done) {
-      var spy = jasmine.createSpy('spy');
+      var spy = createSpy('spy');
       var req;
       var pending = false;
 

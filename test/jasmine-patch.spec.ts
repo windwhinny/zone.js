@@ -3,7 +3,7 @@ beforeEach(() => {
   expect(Zone.currentTask).toBeTruthy();
 });
 
-describe('jasmine', () => {
+(describe as any).only('jasmine', () => {
   let throwOnAsync = false;
   let beforeEachZone: Zone = null;
   let itZone: Zone = null;

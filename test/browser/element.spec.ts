@@ -138,7 +138,7 @@ describe('element', function () {
   it('should respect removeEventListener with an EventListener-implementing listener', function () {
     var eventListener = {
       x: 5,
-      handleEvent: jasmine.createSpy('handleEvent')
+      handleEvent: createSpy('handleEvent')
     };
 
     button.addEventListener('click', eventListener);
@@ -150,7 +150,7 @@ describe('element', function () {
   });
 
   it('should have no effect while calling addEventListener without listener', function () {
-    var onAddEventListenerSpy = jasmine.createSpy('addEventListener')
+    var onAddEventListenerSpy = createSpy('addEventListener')
     var eventListenerZone = Zone.current.fork({
       name: 'eventListenerZone', 
       onScheduleTask: onAddEventListenerSpy
@@ -160,12 +160,12 @@ describe('element', function () {
         button.addEventListener('click', null);
         button.addEventListener('click', undefined);
       });
-    }).not.toThrowError();
-    expect(onAddEventListenerSpy).not.toHaveBeenCalledWith();
+    }).not.toThrow();
+    expect(onAddEventListenerSpy).not.toHaveBeenCalled();
   });
 
   it('should have no effect while calling removeEventListener without listener', function () {
-    var onAddEventListenerSpy =  jasmine.createSpy('removeEventListener');
+    var onAddEventListenerSpy =  createSpy('removeEventListener');
     var eventListenerZone = Zone.current.fork({ 
       name: 'eventListenerZone', 
       onScheduleTask: onAddEventListenerSpy
@@ -175,8 +175,8 @@ describe('element', function () {
         button.removeEventListener('click', null);
         button.removeEventListener('click', undefined);
       });
-    }).not.toThrowError();
-    expect(onAddEventListenerSpy).not.toHaveBeenCalledWith();
+    }).not.toThrow();
+    expect(onAddEventListenerSpy).not.toHaveBeenCalled();
   });
 
 

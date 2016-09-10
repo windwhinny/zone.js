@@ -43,7 +43,7 @@ describe('setTimeout', function () {
   it('should allow canceling of fns registered with setTimeout', function (done) {
     var testZone = Zone.current.fork(Zone['wtfZoneSpec']).fork({ name: 'TestZone' });
     testZone.run(() => {
-      var spy = jasmine.createSpy('spy');
+      var spy = createSpy('spy');
       var cancelId = setTimeout(spy, 0);
       clearTimeout(cancelId);
       setTimeout(function () {
@@ -56,7 +56,7 @@ describe('setTimeout', function () {
   it('should allow cancelation of fns registered with setTimeout after invocation', function (done) {
     var testZone = Zone.current.fork(Zone['wtfZoneSpec']).fork({ name: 'TestZone' });
     testZone.run(() => {
-      var spy = jasmine.createSpy('spy');
+      var spy = createSpy('spy');
       var cancelId = setTimeout(spy, 0);
       setTimeout(function () {
         expect(spy).toHaveBeenCalled();
@@ -68,7 +68,7 @@ describe('setTimeout', function () {
     });
   });
 
-  it('should allow cancelation of fns while the task is being executed', function (done) {var spy = jasmine.createSpy('spy');
+  it('should allow cancelation of fns while the task is being executed', function (done) {var spy = createSpy('spy');
     var cancelId = setTimeout(() => {
       clearTimeout(cancelId);
       done();

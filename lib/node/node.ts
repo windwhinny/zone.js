@@ -1,4 +1,3 @@
-import '../zone';
 import {patchTimer} from '../common/timers';
 
 const set = 'set';

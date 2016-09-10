@@ -1,4 +1,3 @@
-import '../zone';
 import {eventTargetPatch} from './event-target';
 import {propertyPatch} from './define-property';
 import {registerElementPatch} from './register-element';

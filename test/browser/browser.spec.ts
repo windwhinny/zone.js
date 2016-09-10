@@ -9,9 +9,9 @@ describe('Zone', function () {
 
   describe('hooks', function () {
     it('should allow you to override alert/prompt/confirm', function () {
-      var alertSpy = jasmine.createSpy('alert');
-      var promptSpy = jasmine.createSpy('prompt');
-      var confirmSpy = jasmine.createSpy('confirm');
+      var alertSpy = createSpy('alert');
+      var promptSpy = createSpy('prompt');
+      var confirmSpy = createSpy('confirm');
       var spies = {
         'alert': alertSpy,
         'prompt': promptSpy,
@@ -57,8 +57,8 @@ describe('Zone', function () {
       });
 
       it('should support addEventListener', function () {
-        var hookSpy = jasmine.createSpy('hook');
-        var eventListenerSpy = jasmine.createSpy('eventListener');
+        var hookSpy = createSpy('hook');
+        var eventListenerSpy = createSpy('eventListener');
         var zone = rootZone.fork({
           name: 'spy',
           onScheduleTask: (parentZoneDelegate: ZoneDelegate, currentZone: Zone, targetZone: Zone,
@@ -79,8 +79,8 @@ describe('Zone', function () {
       });
 
       it('should support addEventListener on window', ifEnvSupports(windowPrototype, function () {
-        var hookSpy = jasmine.createSpy('hook');
-        var eventListenerSpy = jasmine.createSpy('eventListener');
+        var hookSpy = createSpy('hook');
+        var eventListenerSpy = createSpy('eventListener');
         var zone = rootZone.fork({
           name: 'spy',
           onScheduleTask: (parentZoneDelegate: ZoneDelegate, currentZone: Zone, targetZone: Zone,
@@ -101,8 +101,8 @@ describe('Zone', function () {
       }));
 
       it('should support removeEventListener', function () {
-        var hookSpy = jasmine.createSpy('hook');
-        var eventListenerSpy = jasmine.createSpy('eventListener');
+        var hookSpy = createSpy('hook');
+        var eventListenerSpy = createSpy('eventListener');
         var zone = rootZone.fork({
           name: 'spy',
           onCancelTask: (parentZoneDelegate: ZoneDelegate, currentZone: Zone, targetZone: Zone,

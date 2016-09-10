@@ -2,8 +2,7 @@
 import './wtf_mock';
 
 // Setup tests for Zone without microtask support
-import '../lib/zone';
-import '../lib/node/node';
+import '../lib/zone-node';
 import '../lib/zone-spec/async-test';
 import '../lib/zone-spec/fake-async-test';
 import '../lib/zone-spec/long-stack-trace';

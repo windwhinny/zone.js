@@ -17,7 +17,7 @@ describe('Zone', function () {
 
 
     it('should fire onError if a function run by a zone throws', function () {
-      var errorSpy = jasmine.createSpy('error');
+      var errorSpy = createSpy('error');
       var myZone = Zone.current.fork({
         name: 'spy',
         onHandleError: errorSpy

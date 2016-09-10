@@ -10,7 +10,10 @@ __karma__.loaded = function() {};
 System.config({
   defaultJSExtensions: true
 });
-System.import('/base/build/test/browser_entry_point').then(
+Promise.all([
+    System.import('/base/build/lib/browser/browser'),
+    System.import('/base/build/test/browser_entry_point')
+]).then(
     () => {
       __karma__.start();
     },

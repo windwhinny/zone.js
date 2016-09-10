@@ -4,7 +4,7 @@
 System.config({
   defaultJSExtensions: true
 });
-System.import('../lib/browser/browser').then(() => {
+System.import('../lib/zone-browser').then(() => {
   Zone.current.fork({name: 'webworker'}).run(() => {
     var websocket = new WebSocket('ws://localhost:8001');
     websocket.addEventListener('open', () => {

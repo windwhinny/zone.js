@@ -40,7 +40,7 @@ describe('FileReader', ifEnvSupports('FileReader', function () {
     });
 
     it('should remove listeners via removeEventListener', function (done) {
-      var listenerSpy = jasmine.createSpy('listener');
+      var listenerSpy = createSpy('listener');
 
       testZone.run(function () {
         fileReader.addEventListener('loadstart', listenerSpy);
